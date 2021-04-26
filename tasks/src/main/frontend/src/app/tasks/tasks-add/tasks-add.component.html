@@ -3,5 +3,5 @@
            class="form-control"
            placeholder="Add Task"
            (keyup.enter)="onTaskAdd($event)"
-           ngModel="addTaskValue"/>
+           [(ngModel)]="addTaskValue"/>
 </div>

@@ -21,7 +21,7 @@ export class TasksAddComponent implements OnInit {
 
     onTaskAdd($event) {
 
-        let task: Task = new Task($event.target.value, false, getLocaleDateFormat("dd/mm/yy", 10));
+        let task: Task = new Task($event.target.value, false, this.getTodayAsString());
         this.taskService.addTask(task).subscribe(
             (newTask: Task) => {
                 //clear input
@@ -31,4 +31,19 @@ export class TasksAddComponent implements OnInit {
         );
 
     }
+    getTodayAsString(){
+        let today = new Date();
+        let dd: any = today.getDate();
+        let mm: any = today.getMonth();
+        let yyyy: any = today.getFullYear();
+
+        if(dd<10){
+            dd= '0' + dd;
+        }
+        if(mm<10){
+            mm= '0' + mm;
+        }
+        return mm + '/' + dd + '/' + yyyy;
+    }
+
 }
